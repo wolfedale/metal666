@@ -3,6 +3,7 @@ package types
 type Certificate struct {
 	Name string
 	Data []byte
+	Storage Storages
 }
 
 type Storages interface {

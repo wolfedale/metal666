@@ -1,6 +1,17 @@
 package kafka
 
-// here I will connect to kafka cluster and will get
-// - crt.ca
-// - certificate name
-// - and I want to call my storage interface to create/delete or update it in on of the storage backend (secret or vault)
+import (
+	"github.com/wolfedale/metal666/pkg/storages/secret"
+	"github.com/wolfedale/metal666/pkg/storages/types"
+)
+
+func Run() {
+	storage := secret.New()
+
+	cert := types.Certificate{}
+	cert.Name = "blah"
+	cert.Data = []byte("blah")
+	cert.Storage = storage
+
+	cert.Storage.Create()
+}

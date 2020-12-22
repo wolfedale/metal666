@@ -11,6 +11,10 @@ type Secret struct {
 	SecretType string
 }
 
+func New() Secret {
+	return Secret{}
+}
+
 func (s *Secret) Create(cert types.Certificate) (types.Certificate, error) {
 	fmt.Println("Create() method from Secret pkg")
 	return types.Certificate{}, nil
