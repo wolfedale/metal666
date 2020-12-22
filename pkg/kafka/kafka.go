@@ -1,17 +1,26 @@
-package kafka
+package main
 
 import (
-	"github.com/wolfedale/metal666/pkg/storages/secret"
 	"github.com/wolfedale/metal666/pkg/storages/types"
 )
 
-func Run() {
-	storage := secret.New()
+type exec struct {
+	cert    types.Certificate
+	storage types.Storager
+}
 
-	cert := types.Certificate{}
-	cert.Name = "blah"
-	cert.Data = []byte("blah")
-	cert.Storage = storage
+//storage = secret.New()
 
-	cert.Storage.Create()
+func New(storage types.Storager) *exec {
+	return &exec{
+		cert: types.Certificate{
+			Name: "blah",
+			Data: []byte("blah"),
+		},
+		storage: storage,
+	}
+}
+
+func (e *exec) Create() {
+	e.storage.Create(e.cert)
 }

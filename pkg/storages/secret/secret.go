@@ -11,8 +11,8 @@ type Secret struct {
 	SecretType string
 }
 
-func New() Secret {
-	return Secret{}
+func New() *Secret {
+	return &Secret{}
 }
 
 func (s *Secret) Create(cert types.Certificate) (types.Certificate, error) {
